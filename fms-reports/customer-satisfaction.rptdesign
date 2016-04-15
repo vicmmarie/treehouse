@@ -1,0 +1,1814 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 4.5.0.v201506092134 Build &lt;@BUILD@></property>
+    <list-property name="propertyBindings">
+        <structure>
+            <property name="name">queryText</property>
+            <property name="id">1490</property>
+        </structure>
+        <structure>
+            <property name="name">queryTimeOut</property>
+            <property name="id">1490</property>
+        </structure>
+        <structure>
+            <property name="name">rowFetchSize</property>
+            <property name="id">1490</property>
+        </structure>
+    </list-property>
+    <property name="units">in</property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">72</property>
+    <parameters>
+        <scalar-parameter name="par_business_unit_label" id="1491">
+            <text-property name="promptText">Business Label</text-property>
+            <property name="valueType">dynamic</property>
+            <property name="isRequired">true</property>
+            <property name="dataSetName">Business Units</property>
+            <expression name="valueExpr" type="javascript">dataSetRow["label"]</expression>
+            <expression name="labelExpr" type="javascript">dataSetRow["label"]</expression>
+            <expression name="sortByColumn">dataSetRow["label"]</expression>
+            <property name="sortDirection">asc</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant">FM Solutions Inc -Software</value>
+                <value type="constant">FM Solutions Inc -Prop Mgmt</value>
+                <value type="constant">FM Solutions Inc -Proj Mgmt</value>
+                <value type="constant">FM Solutions Inc -Field Svcs</value>
+                <value type="constant">FM Solutions Inc -Fac Consult</value>
+                <value type="constant">FM Solutions Inc -Architecture</value>
+                <value type="constant">FM Solutions Inc</value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">multi-value</property>
+            <property name="controlType">list-box</property>
+            <property name="mustMatch">true</property>
+            <property name="fixedOrder">false</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="par_project_dynamics_code" id="1664">
+            <text-property name="promptText">FMS Project Code</text-property>
+            <property name="valueType">static</property>
+            <property name="isRequired">false</property>
+            <property name="dataType">string</property>
+            <property name="distinct">true</property>
+            <simple-property-list name="defaultValue">
+                <value type="constant"></value>
+            </simple-property-list>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="FMSPortal" id="5">
+            <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>metadataBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledMetadataBidiFormatStr</name>
+                </ex-property>
+                <ex-property>
+                    <name>contentBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>disabledContentBidiFormatStr</name>
+                </ex-property>
+            </list-property>
+            <property name="odaDriverClass">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+            <property name="odaURL">jdbc:sqlserver://10.0.0.11;databaseName=FMSPortalTest</property>
+            <property name="odaUser">fmsportal_login</property>
+            <encrypted-property name="odaPassword" encryptionID="base64">U29sdXRpb25zNDAwMQ==</encrypted-property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Business Units" id="1489">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">id</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">id</text-property>
+                    <text-property name="heading">id</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">version</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">version</text-property>
+                    <text-property name="heading">version</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">create_user</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">create_user</text-property>
+                    <text-property name="heading">create_user</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">last_update</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">last_update</text-property>
+                    <text-property name="heading">last_update</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">date_created</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">date_created</text-property>
+                    <text-property name="heading">date_created</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">label</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">label</text-property>
+                    <text-property name="heading">label</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">dynamics_code</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">dynamics_code</text-property>
+                    <text-property name="heading">dynamics_code</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">update_user</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">update_user</text-property>
+                    <text-property name="heading">update_user</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">last_updated</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">last_updated</text-property>
+                    <text-property name="heading">last_updated</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">short_code</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">short_code</text-property>
+                    <text-property name="heading">short_code</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">projection_adjustment</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">projection_adjustment</text-property>
+                    <text-property name="heading">projection_adjustment</text-property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">id</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">version</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">create_user</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">last_update</property>
+                        <property name="dataType">date-time</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">date_created</property>
+                        <property name="dataType">date-time</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">label</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">dynamics_code</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">update_user</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">last_updated</property>
+                        <property name="dataType">date-time</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">short_code</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">projection_adjustment</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">FMSPortal</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">id</property>
+                    <property name="nativeName">id</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">-5</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">version</property>
+                    <property name="nativeName">version</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">-5</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">create_user</property>
+                    <property name="nativeName">create_user</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">last_update</property>
+                    <property name="nativeName">last_update</property>
+                    <property name="dataType">date-time</property>
+                    <property name="nativeDataType">93</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">date_created</property>
+                    <property name="nativeName">date_created</property>
+                    <property name="dataType">date-time</property>
+                    <property name="nativeDataType">93</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">label</property>
+                    <property name="nativeName">label</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">dynamics_code</property>
+                    <property name="nativeName">dynamics_code</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">update_user</property>
+                    <property name="nativeName">update_user</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">last_updated</property>
+                    <property name="nativeName">last_updated</property>
+                    <property name="dataType">date-time</property>
+                    <property name="nativeDataType">93</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">short_code</property>
+                    <property name="nativeName">short_code</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">11</property>
+                    <property name="name">projection_adjustment</property>
+                    <property name="nativeName">projection_adjustment</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select *
+from dbo.business_unit]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>id</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-5</design:nativeDataTypeCode>
+            <design:precision>19</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>id</design:label>
+            <design:formattingHints>
+              <design:displaySize>20</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>version</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-5</design:nativeDataTypeCode>
+            <design:precision>19</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>version</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>version</design:label>
+            <design:formattingHints>
+              <design:displaySize>20</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>create_user</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>create_user</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>create_user</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>last_update</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>93</design:nativeDataTypeCode>
+            <design:precision>23</design:precision>
+            <design:scale>3</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>last_update</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>last_update</design:label>
+            <design:formattingHints>
+              <design:displaySize>23</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>date_created</design:name>
+              <design:position>5</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>93</design:nativeDataTypeCode>
+            <design:precision>23</design:precision>
+            <design:scale>3</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>date_created</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>date_created</design:label>
+            <design:formattingHints>
+              <design:displaySize>23</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>label</design:name>
+              <design:position>6</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>32</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>label</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>label</design:label>
+            <design:formattingHints>
+              <design:displaySize>32</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>dynamics_code</design:name>
+              <design:position>7</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>32</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>dynamics_code</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>dynamics_code</design:label>
+            <design:formattingHints>
+              <design:displaySize>32</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>update_user</design:name>
+              <design:position>8</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>update_user</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>update_user</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>last_updated</design:name>
+              <design:position>9</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>93</design:nativeDataTypeCode>
+            <design:precision>23</design:precision>
+            <design:scale>3</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>last_updated</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>last_updated</design:label>
+            <design:formattingHints>
+              <design:displaySize>23</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>short_code</design:name>
+              <design:position>10</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>2</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>short_code</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>short_code</design:label>
+            <design:formattingHints>
+              <design:displaySize>2</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>projection_adjustment</design:name>
+              <design:position>11</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>projection_adjustment</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>projection_adjustment</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Survey" id="1490">
+            <property name="nullsOrdering">nulls lowest</property>
+            <list-property name="computedColumns">
+                <structure>
+                    <property name="name">total_percent_complete_computed</property>
+                    <expression name="expression">row["total_percent_complete"]/100</expression>
+                    <property name="dataType">float</property>
+                </structure>
+                <structure>
+                    <property name="name">exeeds_computed</property>
+                    <expression name="expression">row["exceeds_expectations"]/100</expression>
+                    <property name="dataType">float</property>
+                </structure>
+                <structure>
+                    <property name="name">meets_computed</property>
+                    <expression name="expression">row["meets_expections"]/100</expression>
+                    <property name="dataType">float</property>
+                </structure>
+                <structure>
+                    <property name="name">does_not_meet_computed</property>
+                    <expression name="expression">row["does_not_meet_expection"]/100</expression>
+                    <property name="dataType">float</property>
+                </structure>
+            </list-property>
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">project_id</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">project_id</text-property>
+                    <text-property name="heading">project_id</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">business_unit_label</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">business_unit_label</text-property>
+                    <text-property name="heading">business_unit_label</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">business_unit_code</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">business_unit_code</text-property>
+                    <text-property name="heading">business_unit_code</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">project_manager_name</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">project_manager_name</text-property>
+                    <text-property name="heading">project_manager_name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">project_client_number</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">project_client_number</text-property>
+                    <text-property name="heading">project_client_number</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">project_dynamics_code</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">project_dynamics_code</text-property>
+                    <text-property name="heading">project_dynamics_code</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">project_name</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">project_name</text-property>
+                    <text-property name="heading">project_name</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">project_status_label</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">project_status_label</text-property>
+                    <text-property name="heading">project_status_label</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">total_percent_complete</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">total_percent_complete</text-property>
+                    <text-property name="heading">total_percent_complete</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">client_survey_requested</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">client_survey_requested</text-property>
+                    <text-property name="heading">client_survey_requested</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">customer_survey_requested</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">customer_survey_requested</text-property>
+                    <text-property name="heading">customer_survey_requested</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">internal_survey_requested</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">internal_survey_requested</text-property>
+                    <text-property name="heading">internal_survey_requested</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">comments</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">comments</text-property>
+                    <text-property name="heading">comments</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">does_not_meet_expection</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">does_not_meet_expection</text-property>
+                    <text-property name="heading">does_not_meet_expection</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">exceeds_expectations</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">exceeds_expectations</text-property>
+                    <text-property name="heading">exceeds_expectations</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">meets_expections</property>
+                    <property name="analysis">measure</property>
+                    <text-property name="displayName">meets_expections</text-property>
+                    <text-property name="heading">meets_expections</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">survey_date</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">survey_date</text-property>
+                    <text-property name="heading">survey_date</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">label</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">label</text-property>
+                    <text-property name="heading">label</text-property>
+                </structure>
+            </list-property>
+            <list-property name="filter">
+                <structure>
+                    <property name="operator">in</property>
+                    <expression name="expr" type="javascript">row["business_unit_label"]</expression>
+                    <simple-property-list name="value1">
+                        <value>params["par_business_unit_label"].value</value>
+                    </simple-property-list>
+                </structure>
+                <structure>
+                    <property name="operator">like</property>
+                    <expression name="expr" type="javascript">row["project_dynamics_code"]</expression>
+                    <simple-property-list name="value1">
+                        <value>params["par_project_dynamics_code"].value.toUpperCase() + '%'</value>
+                    </simple-property-list>
+                </structure>
+            </list-property>
+            <list-property name="parameters"/>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">project_id</property>
+                        <property name="dataType">decimal</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">business_unit_label</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">business_unit_code</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">project_manager_name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">project_client_number</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">project_dynamics_code</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">project_name</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">project_status_label</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">9</property>
+                        <property name="name">total_percent_complete</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">10</property>
+                        <property name="name">client_survey_requested</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">11</property>
+                        <property name="name">customer_survey_requested</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">12</property>
+                        <property name="name">internal_survey_requested</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">13</property>
+                        <property name="name">comments</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">14</property>
+                        <property name="name">does_not_meet_expection</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">15</property>
+                        <property name="name">exceeds_expectations</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">16</property>
+                        <property name="name">meets_expections</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">17</property>
+                        <property name="name">survey_date</property>
+                        <property name="dataType">date-time</property>
+                    </structure>
+                    <structure>
+                        <property name="position">18</property>
+                        <property name="name">label</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">19</property>
+                        <property name="name">total_percent_complete_computed</property>
+                        <property name="dataType">float</property>
+                    </structure>
+                    <structure>
+                        <property name="position">20</property>
+                        <property name="name">exeeds_computed</property>
+                        <property name="dataType">float</property>
+                    </structure>
+                    <structure>
+                        <property name="position">21</property>
+                        <property name="name">meets_computed</property>
+                        <property name="dataType">float</property>
+                    </structure>
+                    <structure>
+                        <property name="position">22</property>
+                        <property name="name">does_not_meet_computed</property>
+                        <property name="dataType">float</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">FMSPortal</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">project_id</property>
+                    <property name="nativeName">project_id</property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">-5</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">business_unit_label</property>
+                    <property name="nativeName">business_unit_label</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">business_unit_code</property>
+                    <property name="nativeName">business_unit_code</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">project_manager_name</property>
+                    <property name="nativeName">project_manager_name</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">project_client_number</property>
+                    <property name="nativeName">project_client_number</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">project_dynamics_code</property>
+                    <property name="nativeName">project_dynamics_code</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">project_name</property>
+                    <property name="nativeName">project_name</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">project_status_label</property>
+                    <property name="nativeName">project_status_label</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">9</property>
+                    <property name="name">total_percent_complete</property>
+                    <property name="nativeName">total_percent_complete</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">10</property>
+                    <property name="name">client_survey_requested</property>
+                    <property name="nativeName">client_survey_requested</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">-7</property>
+                </structure>
+                <structure>
+                    <property name="position">11</property>
+                    <property name="name">customer_survey_requested</property>
+                    <property name="nativeName">customer_survey_requested</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">-7</property>
+                </structure>
+                <structure>
+                    <property name="position">12</property>
+                    <property name="name">internal_survey_requested</property>
+                    <property name="nativeName">internal_survey_requested</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">-7</property>
+                </structure>
+                <structure>
+                    <property name="position">13</property>
+                    <property name="name">comments</property>
+                    <property name="nativeName">comments</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">14</property>
+                    <property name="name">does_not_meet_expection</property>
+                    <property name="nativeName">does_not_meet_expection</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">15</property>
+                    <property name="name">exceeds_expectations</property>
+                    <property name="nativeName">exceeds_expectations</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">16</property>
+                    <property name="name">meets_expections</property>
+                    <property name="nativeName">meets_expections</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">17</property>
+                    <property name="name">survey_date</property>
+                    <property name="nativeName">survey_date</property>
+                    <property name="dataType">date-time</property>
+                    <property name="nativeDataType">93</property>
+                </structure>
+                <structure>
+                    <property name="position">18</property>
+                    <property name="name">label</property>
+                    <property name="nativeName">label</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select *
+from dbo.vw_project_survey_listing]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>2.0</Version>
+  <design:ResultSets derivedMetaData="true">
+    <design:resultSetDefinitions>
+      <design:resultSetColumns>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>id</design:name>
+              <design:position>1</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-5</design:nativeDataTypeCode>
+            <design:precision>19</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>id</design:label>
+            <design:formattingHints>
+              <design:displaySize>20</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>version</design:name>
+              <design:position>2</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-5</design:nativeDataTypeCode>
+            <design:precision>19</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>version</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>version</design:label>
+            <design:formattingHints>
+              <design:displaySize>20</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>does_not_meet_expection</design:name>
+              <design:position>3</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>does_not_meet_expection</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>does_not_meet_expection</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>last_update</design:name>
+              <design:position>4</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>93</design:nativeDataTypeCode>
+            <design:precision>23</design:precision>
+            <design:scale>3</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>last_update</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>last_update</design:label>
+            <design:formattingHints>
+              <design:displaySize>23</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>meets_expections</design:name>
+              <design:position>5</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>meets_expections</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>meets_expections</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>survey_type_id</design:name>
+              <design:position>6</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-5</design:nativeDataTypeCode>
+            <design:precision>19</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>survey_type_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>survey_type_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>20</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>create_user</design:name>
+              <design:position>7</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>create_user</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>create_user</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>exceeds_expectations</design:name>
+              <design:position>8</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+            <design:precision>10</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>exceeds_expectations</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>exceeds_expectations</design:label>
+            <design:formattingHints>
+              <design:displaySize>11</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>date_created</design:name>
+              <design:position>9</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>93</design:nativeDataTypeCode>
+            <design:precision>23</design:precision>
+            <design:scale>3</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>date_created</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>date_created</design:label>
+            <design:formattingHints>
+              <design:displaySize>23</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>survey_id</design:name>
+              <design:position>10</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>-5</design:nativeDataTypeCode>
+            <design:precision>19</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>survey_id</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>survey_id</design:label>
+            <design:formattingHints>
+              <design:displaySize>20</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>survey_date</design:name>
+              <design:position>11</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>93</design:nativeDataTypeCode>
+            <design:precision>23</design:precision>
+            <design:scale>3</design:scale>
+            <design:nullability>NotNullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>survey_date</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>survey_date</design:label>
+            <design:formattingHints>
+              <design:displaySize>23</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>update_user</design:name>
+              <design:position>12</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>255</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>update_user</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>update_user</design:label>
+            <design:formattingHints>
+              <design:displaySize>255</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>comments</design:name>
+              <design:position>13</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+            <design:precision>1000</design:precision>
+            <design:scale>0</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>comments</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>comments</design:label>
+            <design:formattingHints>
+              <design:displaySize>1000</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+        <design:resultColumnDefinitions>
+          <design:attributes>
+            <design:identifier>
+              <design:name>last_updated</design:name>
+              <design:position>14</design:position>
+            </design:identifier>
+            <design:nativeDataTypeCode>93</design:nativeDataTypeCode>
+            <design:precision>23</design:precision>
+            <design:scale>3</design:scale>
+            <design:nullability>Nullable</design:nullability>
+            <design:uiHints>
+              <design:displayName>last_updated</design:displayName>
+            </design:uiHints>
+          </design:attributes>
+          <design:usageHints>
+            <design:label>last_updated</design:label>
+            <design:formattingHints>
+              <design:displaySize>23</design:displaySize>
+            </design:formattingHints>
+          </design:usageHints>
+        </design:resultColumnDefinitions>
+      </design:resultSetColumns>
+      <design:criteria/>
+    </design:resultSetDefinitions>
+  </design:ResultSets>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+    </data-sets>
+    <styles>
+        <style name="crosstab" id="116">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="crosstab-cell" id="117">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="fms-table" id="1185">
+            <property name="fontFamily">"Open Sans"</property>
+            <property name="fontSize">7.5pt</property>
+        </style>
+        <style name="fms-table-group-1" id="1181">
+            <property name="backgroundColor">#737373</property>
+            <property name="fontFamily">"Open Sans"</property>
+            <property name="fontSize">7.5pt</property>
+            <property name="fontWeight">bold</property>
+            <property name="color">#FFFFFF</property>
+        </style>
+        <style name="fms-table-group-2" id="1182">
+            <property name="backgroundColor">#A2A2A2</property>
+            <property name="fontFamily">"Open Sans"</property>
+            <property name="fontSize">7.5pt</property>
+            <property name="fontWeight">bold</property>
+            <property name="color">#000000</property>
+        </style>
+        <style name="fms-table-group-3" id="1183">
+            <property name="backgroundColor">#BBBBBB</property>
+            <property name="fontFamily">"Open Sans"</property>
+            <property name="fontSize">7.5pt</property>
+            <property name="fontWeight">bold</property>
+        </style>
+        <style name="fms-table-header" id="1184">
+            <property name="backgroundColor">#323232</property>
+            <property name="fontFamily">"Open Sans"</property>
+            <property name="fontSize">7.5pt</property>
+            <property name="fontWeight">bold</property>
+            <property name="fontStyle">normal</property>
+            <property name="color">#FFFFFF</property>
+            <property name="textAlign">center</property>
+        </style>
+        <style name="fms-table-row" id="1203">
+            <property name="fontFamily">"Open Sans"</property>
+            <property name="fontSize">7.5pt</property>
+            <property name="textAlign">center</property>
+        </style>
+        <style name="report" id="1204">
+            <property name="fontFamily">"open sans"</property>
+            <property name="fontSize">7.5pt</property>
+        </style>
+        <style name="report-company-logo-header" id="1205">
+            <property name="fontFamily">"open sans"</property>
+            <property name="fontSize">14pt</property>
+            <property name="fontWeight">300</property>
+            <property name="color">#484848</property>
+            <property name="textOverline">none</property>
+            <property name="textUnderline">none</property>
+            <property name="textAlign">right</property>
+            <property name="verticalAlign">bottom</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <property name="orientation">landscape</property>
+            <page-header>
+                <grid id="345">
+                    <column id="346"/>
+                    <column id="347"/>
+                    <column id="348"/>
+                    <row id="349">
+                        <cell id="350">
+                            <property name="style">report-company-logo-header</property>
+                            <property name="borderBottomColor">#000000</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">1px</property>
+                            <property name="paddingTop">1pt</property>
+                            <property name="paddingLeft">1pt</property>
+                            <property name="paddingBottom">1pt</property>
+                            <property name="paddingRight">1pt</property>
+                            <property name="textAlign">left</property>
+                            <property name="verticalAlign">middle</property>
+                        </cell>
+                        <cell id="351">
+                            <property name="colSpan">2</property>
+                            <property name="rowSpan">1</property>
+                            <property name="style">report-company-logo-header</property>
+                            <property name="borderBottomColor">#000000</property>
+                            <property name="borderBottomStyle">solid</property>
+                            <property name="borderBottomWidth">1px</property>
+                            <property name="paddingTop">1pt</property>
+                            <property name="paddingLeft">1pt</property>
+                            <property name="paddingBottom">1pt</property>
+                            <property name="paddingRight">1pt</property>
+                            <property name="verticalAlign">middle</property>
+                            <text id="368">
+                                <property name="fontWeight">bold</property>
+                                <property name="marginTop">auto</property>
+                                <property name="marginBottom">auto</property>
+                                <property name="contentType">auto</property>
+                                <text-property name="content"><![CDATA[Customer Satisfaction 
+]]></text-property>
+                            </text>
+                        </cell>
+                    </row>
+                </grid>
+            </page-header>
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <table id="1206">
+            <property name="width">10.458333333333334in</property>
+            <property name="dataSet">Survey</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">project_dynamics_code</property>
+                    <text-property name="displayName">project_dynamics_code</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["project_dynamics_code"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">project_name</property>
+                    <text-property name="displayName">project_name</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["project_name"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">project_client_number</property>
+                    <text-property name="displayName">project_client_number</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["project_client_number"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">project_status_label</property>
+                    <text-property name="displayName">project_status_label</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["project_status_label"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">total_percent_complete</property>
+                    <text-property name="displayName">total_percent_complete</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["total_percent_complete"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">exceeds_expectations</property>
+                    <text-property name="displayName">exceeds_expectations</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["exceeds_expectations"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">meets_expections</property>
+                    <text-property name="displayName">meets_expections</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["meets_expections"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">does_not_meet_expection</property>
+                    <text-property name="displayName">does_not_meet_expection</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["does_not_meet_expection"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">total_percent_complete_computed</property>
+                    <text-property name="displayName">total_percent_complete_computed</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["total_percent_complete_computed"]</expression>
+                    <property name="dataType">float</property>
+                </structure>
+                <structure>
+                    <property name="name">comments</property>
+                    <text-property name="displayName">comments</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["comments"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">business_unit_label</property>
+                    <text-property name="displayName">business_unit_label</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["business_unit_label"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">project_manager_name</property>
+                    <text-property name="displayName">project_manager_name</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["project_manager_name"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">survey_date</property>
+                    <text-property name="displayName">survey_date</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["survey_date"]</expression>
+                    <property name="dataType">date-time</property>
+                </structure>
+                <structure>
+                    <property name="name">label</property>
+                    <text-property name="displayName">label</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["label"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">does_not_meet_computed</property>
+                    <text-property name="displayName">does_not_meet_computed</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["does_not_meet_computed"]</expression>
+                    <property name="dataType">float</property>
+                </structure>
+                <structure>
+                    <property name="name">meets_computed</property>
+                    <text-property name="displayName">meets_computed</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["meets_computed"]</expression>
+                    <property name="dataType">float</property>
+                </structure>
+                <structure>
+                    <property name="name">exeeds_computed</property>
+                    <text-property name="displayName">exeeds_computed</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["exeeds_computed"]</expression>
+                    <property name="dataType">float</property>
+                </structure>
+            </list-property>
+            <list-property name="sort">
+                <structure>
+                    <expression name="key" type="javascript">row["project_dynamics_code"]</expression>
+                    <property name="direction">asc</property>
+                    <property name="strength">-1</property>
+                </structure>
+            </list-property>
+            <column id="1285">
+                <property name="width">0.9166666666666666in</property>
+            </column>
+            <column id="1286">
+                <property name="width">2.1805555555555554in</property>
+            </column>
+            <column id="1287">
+                <property name="width">0.9444444444444444in</property>
+            </column>
+            <column id="1290">
+                <property name="width">0.6111111111111112in</property>
+            </column>
+            <column id="1394">
+                <property name="width">0.6388888888888888in</property>
+            </column>
+            <column id="1291">
+                <property name="width">0.5833333333333334in</property>
+            </column>
+            <column id="1292">
+                <property name="width">0.5833333333333334in</property>
+            </column>
+            <column id="1293">
+                <property name="width">0.5833333333333334in</property>
+            </column>
+            <column id="1999">
+                <property name="width">0.5555555555555556in</property>
+            </column>
+            <column id="1680">
+                <property name="width">2.2916666666666665in</property>
+            </column>
+            <column id="1877">
+                <property name="width">0.5694444444444444in</property>
+            </column>
+            <header>
+                <row id="1371">
+                    <property name="style">fms-table-header</property>
+                    <cell id="1372">
+                        <property name="colSpan">4</property>
+                        <property name="rowSpan">1</property>
+                        <label id="1658">
+                            <property name="fontSize">10pt</property>
+                            <text-property name="text">Project</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1388">
+                        <label id="1853">
+                            <text-property name="text"></text-property>
+                        </label>
+                    </cell>
+                    <cell id="1376">
+                        <property name="colSpan">5</property>
+                        <property name="rowSpan">1</property>
+                        <property name="backgroundColor">#482346</property>
+                        <label id="1385">
+                            <property name="fontSize">10pt</property>
+                            <text-property name="text">Customer Satisfaction</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1873">
+                        <property name="backgroundColor">#482346</property>
+                    </cell>
+                </row>
+                <row id="1207">
+                    <property name="style">fms-table-header</property>
+                    <cell id="1208">
+                        <label id="1209">
+                            <text-property name="text">FMS #</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1210">
+                        <label id="1211">
+                            <text-property name="text">Name</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1212">
+                        <label id="1213">
+                            <text-property name="text">Client #</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1218">
+                        <label id="1219">
+                            <text-property name="text">Status</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1389">
+                        <label id="1237">
+                            <text-property name="text">Total % Complete</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1220">
+                        <property name="backgroundColor">#482346</property>
+                        <label id="1808">
+                            <text-property name="text">Exceeds</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1222">
+                        <property name="backgroundColor">#482346</property>
+                        <label id="1810">
+                            <text-property name="text">Meets</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1224">
+                        <property name="backgroundColor">#482346</property>
+                        <label id="1812">
+                            <text-property name="text">Does Not Meet</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1992">
+                        <property name="backgroundColor">#482346</property>
+                        <label id="2001">
+                            <text-property name="text">Survey Type</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1675">
+                        <property name="backgroundColor">#482346</property>
+                        <label id="1801">
+                            <text-property name="text">Comments</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1874">
+                        <property name="backgroundColor">#482346</property>
+                        <label id="1980">
+                            <text-property name="text">Survey Date</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <group id="1932">
+                <property name="groupName">Business Unit Label</property>
+                <expression name="keyExpr" type="javascript">row["business_unit_label"]</expression>
+                <structure name="toc">
+                    <expression name="expressionValue" type="javascript">row["business_unit_label"]</expression>
+                </structure>
+                <property name="hideDetail">false</property>
+                <header>
+                    <row id="1933">
+                        <property name="style">fms-table-group-1</property>
+                        <cell id="1934">
+                            <property name="colSpan">2</property>
+                            <property name="rowSpan">1</property>
+                            <data id="1955">
+                                <property name="resultSetColumn">business_unit_label</property>
+                            </data>
+                        </cell>
+                        <cell id="1936"/>
+                        <cell id="1937"/>
+                        <cell id="1938"/>
+                        <cell id="1939"/>
+                        <cell id="1940"/>
+                        <cell id="1941"/>
+                        <cell id="1993"/>
+                        <cell id="1942"/>
+                        <cell id="1943"/>
+                    </row>
+                </header>
+                <footer>
+                    <row id="1944">
+                        <cell id="1945"/>
+                        <cell id="1946"/>
+                        <cell id="1947"/>
+                        <cell id="1948"/>
+                        <cell id="1949"/>
+                        <cell id="1950"/>
+                        <cell id="1951"/>
+                        <cell id="1952"/>
+                        <cell id="1997"/>
+                        <cell id="1953"/>
+                        <cell id="1954"/>
+                    </row>
+                </footer>
+            </group>
+            <group id="1956">
+                <property name="groupName">Project Manager</property>
+                <expression name="keyExpr" type="javascript">row["project_manager_name"]</expression>
+                <structure name="toc">
+                    <expression name="expressionValue" type="javascript">row["project_manager_name"]</expression>
+                </structure>
+                <property name="hideDetail">false</property>
+                <header>
+                    <row id="1957">
+                        <property name="style">fms-table-group-2</property>
+                        <cell id="1958">
+                            <property name="colSpan">2</property>
+                            <property name="rowSpan">1</property>
+                            <data id="1979">
+                                <property name="resultSetColumn">project_manager_name</property>
+                            </data>
+                        </cell>
+                        <cell id="1960"/>
+                        <cell id="1961"/>
+                        <cell id="1962"/>
+                        <cell id="1963"/>
+                        <cell id="1964"/>
+                        <cell id="1965"/>
+                        <cell id="1994"/>
+                        <cell id="1966"/>
+                        <cell id="1967"/>
+                    </row>
+                </header>
+                <footer>
+                    <row id="1968">
+                        <cell id="1969"/>
+                        <cell id="1970"/>
+                        <cell id="1971"/>
+                        <cell id="1972"/>
+                        <cell id="1973"/>
+                        <cell id="1974"/>
+                        <cell id="1975"/>
+                        <cell id="1976"/>
+                        <cell id="1996"/>
+                        <cell id="1977"/>
+                        <cell id="1978"/>
+                    </row>
+                </footer>
+            </group>
+            <detail>
+                <row id="1238">
+                    <property name="style">fms-table-row</property>
+                    <property name="fontSize">6.5pt</property>
+                    <property name="textAlign">left</property>
+                    <cell id="1239">
+                        <data id="1868">
+                            <property name="resultSetColumn">project_dynamics_code</property>
+                        </data>
+                    </cell>
+                    <cell id="1241">
+                        <data id="1869">
+                            <property name="resultSetColumn">project_name</property>
+                        </data>
+                    </cell>
+                    <cell id="1243">
+                        <data id="1870">
+                            <property name="resultSetColumn">project_client_number</property>
+                        </data>
+                    </cell>
+                    <cell id="1249">
+                        <data id="1871">
+                            <property name="resultSetColumn">project_status_label</property>
+                        </data>
+                    </cell>
+                    <cell id="1392">
+                        <data id="1881">
+                            <structure name="numberFormat">
+                                <property name="category">Percent</property>
+                                <property name="pattern">###0%{RoundingMode=HALF_UP}</property>
+                            </structure>
+                            <property name="resultSetColumn">total_percent_complete_computed</property>
+                        </data>
+                    </cell>
+                    <cell id="1251">
+                        <data id="2004">
+                            <structure name="numberFormat">
+                                <property name="category">Percent</property>
+                                <property name="pattern">###0%{RoundingMode=HALF_UP}</property>
+                            </structure>
+                            <property name="resultSetColumn">exeeds_computed</property>
+                        </data>
+                    </cell>
+                    <cell id="1253">
+                        <data id="2003">
+                            <structure name="numberFormat">
+                                <property name="category">Percent</property>
+                                <property name="pattern">###0%{RoundingMode=HALF_UP}</property>
+                            </structure>
+                            <property name="resultSetColumn">meets_computed</property>
+                        </data>
+                    </cell>
+                    <cell id="1255">
+                        <data id="2002">
+                            <structure name="numberFormat">
+                                <property name="category">Percent</property>
+                                <property name="pattern">###0%{RoundingMode=HALF_UP}</property>
+                            </structure>
+                            <property name="resultSetColumn">does_not_meet_computed</property>
+                        </data>
+                    </cell>
+                    <cell id="1995">
+                        <data id="2000">
+                            <property name="resultSetColumn">label</property>
+                        </data>
+                    </cell>
+                    <cell id="1678">
+                        <data id="1882">
+                            <property name="resultSetColumn">comments</property>
+                        </data>
+                    </cell>
+                    <cell id="1875">
+                        <data id="1981">
+                            <structure name="dateTimeFormat">
+                                <property name="category">Medium Date</property>
+                                <property name="pattern">Medium Date</property>
+                            </structure>
+                            <property name="resultSetColumn">survey_date</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="1269">
+                    <cell id="1270"/>
+                    <cell id="1271"/>
+                    <cell id="1272"/>
+                    <cell id="1275"/>
+                    <cell id="1393"/>
+                    <cell id="1276"/>
+                    <cell id="1277"/>
+                    <cell id="1278"/>
+                    <cell id="1998"/>
+                    <cell id="1679"/>
+                    <cell id="1876"/>
+                </row>
+            </footer>
+        </table>
+    </body>
+</report>
